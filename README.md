@@ -4,11 +4,18 @@ A Flutter application that brings classic arcade games to your fingertips. This 
 
 ## Features
 
-*   **Main Menu:** A simple menu to select a game.
+*   **Main Menu:** A beautiful and engaging main menu to select a game.
 *   **Asteroids:** The classic space-shooter game.
     *   Fly your ship through a dangerous asteroid field.
     *   Shoot and destroy asteroids.
     *   Avoid collisions to survive.
+*   **Pong:** The classic table tennis game.
+
+## Screenshots
+
+**Main Menu**
+
+*A grid-based menu with icons and descriptions for each game.*
 
 ## Getting Started
 
@@ -53,8 +60,27 @@ You can run the app on a connected device, simulator, or the web.
 
 ## How to Play Asteroids
 
-*   **Arrow Keys:** Use the left and right arrow keys to turn the ship, and the up arrow key to move it forward.
-*   **Space Bar:** Press the space bar to shoot.
+*   **Keyboard Controls:**
+    *   **Arrow Left:** Turn left
+    *   **Arrow Right:** Turn right
+    *   **Arrow Up:** Thrust
+    *   **Space Bar:** Shoot
+*   **On-screen Controls (for touch devices):**
+    *   **Left Button:** Turn left
+    *   **Right Button:** Turn right
+    *   **Thrust Button:** Thrust
+    *   **Fire Button:** Shoot
+
+## How to Play Pong
+
+*   **Keyboard Controls:**
+    *   **Player 1 (Left Paddle):** 'W' to move up and 'S' to move down.
+    *   **Player 2 (Right Paddle):** Arrow Up and Arrow Down keys to move.
+*   **On-screen Controls (for touch devices):**
+    *   **Player 1 Up Button:** Move Player 1 paddle up
+    *   **Player 1 Down Button:** Move Player 1 paddle down
+    *   **Player 2 Up Button:** Move Player 2 paddle up
+    *   **Player 2 Down Button:** Move Player 2 paddle down
 
 ## Built With
 

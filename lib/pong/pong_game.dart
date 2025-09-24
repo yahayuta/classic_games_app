@@ -3,11 +3,11 @@ import 'dart:math';
 
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
-import 'package:flame/events.dart';
+import 'package:flame/input.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/material.dart';
 
 import 'ball.dart';
+import 'button.dart';
 import 'paddle.dart';
 
 class PongGame extends FlameGame with KeyboardHandler, HasCollisionDetection {
@@ -16,6 +16,11 @@ class PongGame extends FlameGame with KeyboardHandler, HasCollisionDetection {
   late Ball _ball;
 
   final double _ballSpeed = 200;
+
+  bool _isPlayer1UpPressed = false;
+  bool _isPlayer1DownPressed = false;
+  bool _isPlayer2UpPressed = false;
+  bool _isPlayer2DownPressed = false;
 
   @override
   Future<void> onLoad() async {
@@ -31,6 +36,39 @@ class PongGame extends FlameGame with KeyboardHandler, HasCollisionDetection {
     add(_player1);
     add(_player2);
     add(_ball);
+
+    // Add buttons
+    add(Button(
+      label: 'Up',
+      position: Vector2(50, size.y - 120),
+      size: Vector2(80, 40),
+      onPressed: () => _isPlayer1UpPressed = true,
+      onReleased: () => _isPlayer1UpPressed = false,
+    ));
+
+    add(Button(
+      label: 'Down',
+      position: Vector2(50, size.y - 60),
+      size: Vector2(80, 40),
+      onPressed: () => _isPlayer1DownPressed = true,
+      onReleased: () => _isPlayer1DownPressed = false,
+    ));
+
+    add(Button(
+      label: 'Up',
+      position: Vector2(size.x - 130, size.y - 120),
+      size: Vector2(80, 40),
+      onPressed: () => _isPlayer2UpPressed = true,
+      onReleased: () => _isPlayer2UpPressed = false,
+    ));
+
+    add(Button(
+      label: 'Down',
+      position: Vector2(size.x - 130, size.y - 60),
+      size: Vector2(80, 40),
+      onPressed: () => _isPlayer2DownPressed = true,
+      onReleased: () => _isPlayer2DownPressed = false,
+    ));
   }
 
   @override
@@ -53,6 +91,19 @@ class PongGame extends FlameGame with KeyboardHandler, HasCollisionDetection {
   @override
   void update(double dt) {
     super.update(dt);
+
+    if (_isPlayer1UpPressed) {
+      _player1.moveUp(dt);
+    }
+    if (_isPlayer1DownPressed) {
+      _player1.moveDown(dt);
+    }
+    if (_isPlayer2UpPressed) {
+      _player2.moveUp(dt);
+    }
+    if (_isPlayer2DownPressed) {
+      _player2.moveDown(dt);
+    }
 
     if (_ball.position.y <= 0 || _ball.position.y >= size.y) {
       _ball.velocity.y = -_ball.velocity.y;

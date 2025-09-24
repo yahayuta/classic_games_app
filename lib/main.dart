@@ -1,3 +1,4 @@
+
 import 'package:classic_games_app/asteroids/asteroids_game.dart' as game;
 import 'package:classic_games_app/pong/pong_game.dart' as pongGame;
 import 'package:flame/game.dart';
@@ -34,10 +35,13 @@ class MainMenu extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Classic Games'),
       ),
-      body: ListView(
+      body: GridView.count(
+        crossAxisCount: 2,
         children: <Widget>[
-          ListTile(
-            title: const Text('Asteroids'),
+          GameCard(
+            title: 'Asteroids',
+            description: 'Shoot asteroids and survive!',
+            icon: const Icon(Icons.public, size: 50),
             onTap: () {
               Navigator.push(
                 context,
@@ -45,8 +49,10 @@ class MainMenu extends StatelessWidget {
               );
             },
           ),
-          ListTile(
-            title: const Text('Pong'),
+          GameCard(
+            title: 'Pong',
+            description: 'The classic table tennis game.',
+            icon: const Icon(Icons.sports_tennis, size: 50),
             onTap: () {
               Navigator.push(
                 context,
@@ -60,8 +66,66 @@ class MainMenu extends StatelessWidget {
   }
 }
 
-class AsteroidsGameScreen extends StatelessWidget {
+class GameCard extends StatelessWidget {
+  final String title;
+  final String description;
+  final Widget icon;
+  final VoidCallback onTap;
+
+  const GameCard({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.icon,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Card(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            icon,
+            const SizedBox(height: 10),
+            Text(title, style: const TextStyle(fontSize: 20)),
+            const SizedBox(height: 5),
+            Text(description, textAlign: TextAlign.center),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class AsteroidsGameScreen extends StatefulWidget {
   const AsteroidsGameScreen({super.key});
+
+  @override
+  State<AsteroidsGameScreen> createState() => _AsteroidsGameScreenState();
+}
+
+class _AsteroidsGameScreenState extends State<AsteroidsGameScreen> {
+  late final FocusNode _focusNode;
+  late final game.AsteroidsGame _game;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode();
+    _game = game.AsteroidsGame();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _focusNode.requestFocus();
+    });
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,13 +133,40 @@ class AsteroidsGameScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Asteroids'),
       ),
-      body: GameWidget(game: game.AsteroidsGame()),
+      body: GameWidget(
+        game: _game,
+        focusNode: _focusNode,
+      ),
     );
   }
 }
 
-class PongGameScreen extends StatelessWidget {
+class PongGameScreen extends StatefulWidget {
   const PongGameScreen({super.key});
+
+  @override
+  State<PongGameScreen> createState() => _PongGameScreenState();
+}
+
+class _PongGameScreenState extends State<PongGameScreen> {
+  late final FocusNode _focusNode;
+  late final pongGame.PongGame _game;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode();
+    _game = pongGame.PongGame();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _focusNode.requestFocus();
+    });
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +174,10 @@ class PongGameScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Pong'),
       ),
-      body: GameWidget(game: pongGame.PongGame()),
+      body: GameWidget(
+        game: _game,
+        focusNode: _focusNode,
+      ),
     );
   }
 }
