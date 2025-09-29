@@ -1,6 +1,7 @@
 
 import 'package:classic_games_app/asteroids/asteroids_game.dart' as game;
 import 'package:classic_games_app/pong/pong_game.dart' as pongGame;
+import 'package:classic_games_app/tetris/main.dart' as tetrisGame;
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -57,6 +58,17 @@ class MainMenu extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const PongGameScreen()),
+              );
+            },
+          ),
+          GameCard(
+            title: 'Tetris',
+            description: 'Fit the falling blocks.',
+            icon: const Icon(Icons.view_module, size: 50),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const TetrisGameScreen()),
               );
             },
           ),
@@ -173,6 +185,47 @@ class _PongGameScreenState extends State<PongGameScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pong'),
+      ),
+      body: GameWidget(
+        game: _game,
+        focusNode: _focusNode,
+      ),
+    );
+  }
+}
+
+class TetrisGameScreen extends StatefulWidget {
+  const TetrisGameScreen({super.key});
+
+  @override
+  State<TetrisGameScreen> createState() => _TetrisGameScreenState();
+}
+
+class _TetrisGameScreenState extends State<TetrisGameScreen> {
+  late final FocusNode _focusNode;
+  late final tetrisGame.TetrisGame _game;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode();
+    _game = tetrisGame.TetrisGame();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _focusNode.requestFocus();
+    });
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Tetris'),
       ),
       body: GameWidget(
         game: _game,

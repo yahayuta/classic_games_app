@@ -1,6 +1,6 @@
 # Classic Games App
 
-A Flutter application that brings classic arcade games to your fingertips. This project is a collection of simple, fun games built with the Flame engine.
+A Flutter application featuring classic arcade games like Asteroids and Pong, built with the Flame engine. Includes an engaging main menu, keyboard controls, and on-screen touch controls for mobile play.
 
 ## Features
 
@@ -10,6 +10,10 @@ A Flutter application that brings classic arcade games to your fingertips. This 
     *   Shoot and destroy asteroids.
     *   Avoid collisions to survive.
 *   **Pong:** The classic table tennis game.
+*   **Tetris:** The iconic falling block puzzle game.
+    *   Clear lines by completing rows of blocks.
+    *   Strategize with next and held pieces.
+    *   Increasing difficulty with levels.
 
 ## Screenshots
 
@@ -81,6 +85,26 @@ You can run the app on a connected device, simulator, or the web.
     *   **Player 1 Down Button:** Move Player 1 paddle down
     *   **Player 2 Up Button:** Move Player 2 paddle up
     *   **Player 2 Down Button:** Move Player 2 paddle down
+
+## How to Play Tetris
+
+*   **Keyboard Controls:**
+    *   **Arrow Left:** Move piece left
+    *   **Arrow Right:** Move piece right
+    *   **Arrow Down:** Soft drop (move piece down faster)
+    *   **Arrow Up:** Rotate piece
+    *   **Space Bar:** Hard drop (instantly drop piece)
+    *   **H:** Hold piece
+    *   **Enter:** Restart game (after Game Over)
+*   **On-screen Controls (for touch devices):**
+    *   **<- Button:** Move piece left (press and hold for continuous movement)
+    *   **-> Button:** Move piece right (press and hold for continuous movement)
+    *   **Rot Button:** Rotate piece
+    *   **Drop Button:** Hard drop
+
+**Recent Improvements:**
+*   On-screen left and right movement buttons now support "press and hold" for continuous movement.
+*   Resolved issues with on-screen controls not appearing and the game starting directly on the "Game Over" screen.
 
 ## Built With
 

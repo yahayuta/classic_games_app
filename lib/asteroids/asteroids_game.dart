@@ -3,7 +3,6 @@ import 'dart:math';
 
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
-import 'package:flame/input.dart';
 import 'package:flutter/services.dart';
 
 import 'asteroid.dart';
@@ -114,23 +113,25 @@ class AsteroidsGame extends FlameGame with KeyboardHandler, HasCollisionDetectio
   bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
     if (isGameOver) return false;
 
-    if (keysPressed.contains(LogicalKeyboardKey.arrowLeft)) {
-      _ship.turnLeft(0.016);
-    }
-    if (keysPressed.contains(LogicalKeyboardKey.arrowRight)) {
-      _ship.turnRight(0.016);
-    }
-    if (keysPressed.contains(LogicalKeyboardKey.arrowUp)) {
-      _ship.thrust();
-    }
-    if (keysPressed.contains(LogicalKeyboardKey.space)) {
-      if (_timeSinceLastShot >= _shootCooldown) {
-        final bullet = Bullet(
-          position: _ship.position.clone(),
-          angle: _ship.angle,
-        );
-        add(bullet);
-        _timeSinceLastShot = 0.0;
+    if (event is KeyDownEvent) {
+      if (keysPressed.contains(LogicalKeyboardKey.arrowLeft)) {
+        _ship.turnLeft(0.016);
+      }
+      if (keysPressed.contains(LogicalKeyboardKey.arrowRight)) {
+        _ship.turnRight(0.016);
+      }
+      if (keysPressed.contains(LogicalKeyboardKey.arrowUp)) {
+        _ship.thrust();
+      }
+      if (keysPressed.contains(LogicalKeyboardKey.space)) {
+        if (_timeSinceLastShot >= _shootCooldown) {
+          final bullet = Bullet(
+            position: _ship.position.clone(),
+            angle: _ship.angle,
+          );
+          add(bullet);
+          _timeSinceLastShot = 0.0;
+        }
       }
     }
     return true;

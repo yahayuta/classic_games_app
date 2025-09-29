@@ -3,7 +3,6 @@ import 'dart:math';
 
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
-import 'package:flame/input.dart';
 import 'package:flutter/services.dart';
 
 import 'ball.dart';
@@ -73,17 +72,19 @@ class PongGame extends FlameGame with KeyboardHandler, HasCollisionDetection {
 
   @override
   bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
-    if (keysPressed.contains(LogicalKeyboardKey.keyW)) {
-      _player1.moveUp(0.016);
-    }
-    if (keysPressed.contains(LogicalKeyboardKey.keyS)) {
-      _player1.moveDown(0.016);
-    }
-    if (keysPressed.contains(LogicalKeyboardKey.arrowUp)) {
-      _player2.moveUp(0.016);
-    }
-    if (keysPressed.contains(LogicalKeyboardKey.arrowDown)) {
-      _player2.moveDown(0.016);
+    if (event is KeyDownEvent) {
+      if (keysPressed.contains(LogicalKeyboardKey.keyW)) {
+        _player1.moveUp(0.016);
+      }
+      if (keysPressed.contains(LogicalKeyboardKey.keyS)) {
+        _player1.moveDown(0.016);
+      }
+      if (keysPressed.contains(LogicalKeyboardKey.arrowUp)) {
+        _player2.moveUp(0.016);
+      }
+      if (keysPressed.contains(LogicalKeyboardKey.arrowDown)) {
+        _player2.moveDown(0.016);
+      }
     }
     return true;
   }
