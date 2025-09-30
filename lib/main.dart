@@ -2,6 +2,7 @@
 import 'package:classic_games_app/asteroids/asteroids_game.dart' as game;
 import 'package:classic_games_app/pong/pong_game.dart' as pongGame;
 import 'package:classic_games_app/tetris/main.dart' as tetrisGame;
+import 'package:classic_games_app/breakout/breakout_game.dart' as breakoutGame;
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -69,6 +70,17 @@ class MainMenu extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const TetrisGameScreen()),
+              );
+            },
+          ),
+          GameCard(
+            title: 'Breakout',
+            description: 'Destroy all the bricks.',
+            icon: const Icon(Icons.view_carousel, size: 50),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const BreakoutGameScreen()),
               );
             },
           ),
@@ -226,6 +238,47 @@ class _TetrisGameScreenState extends State<TetrisGameScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tetris'),
+      ),
+      body: GameWidget(
+        game: _game,
+        focusNode: _focusNode,
+      ),
+    );
+  }
+}
+
+class BreakoutGameScreen extends StatefulWidget {
+  const BreakoutGameScreen({super.key});
+
+  @override
+  State<BreakoutGameScreen> createState() => _BreakoutGameScreenState();
+}
+
+class _BreakoutGameScreenState extends State<BreakoutGameScreen> {
+  late final FocusNode _focusNode;
+  late final breakoutGame.BreakoutGame _game;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode();
+    _game = breakoutGame.BreakoutGame();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _focusNode.requestFocus();
+    });
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Breakout'),
       ),
       body: GameWidget(
         game: _game,

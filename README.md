@@ -14,6 +14,11 @@ A Flutter application featuring classic arcade games like Asteroids and Pong, bu
     *   Clear lines by completing rows of blocks.
     *   Strategize with next and held pieces.
     *   Increasing difficulty with levels.
+*   **Breakout:** The classic brick-breaking game.
+    *   Destroy all bricks with the ball.
+    *   Control the paddle to keep the ball in play.
+    *   Progress through levels with increasing difficulty.
+    *   Score points for broken bricks and paddle hits.
 
 ## Screenshots
 
@@ -48,6 +53,13 @@ You can run the app on a connected device, simulator, or the web.
     ```sh
     flutter run
     ```
+*   **Run on Android Emulator/Device:**
+    1.  Ensure an Android emulator is running or a device is connected (`flutter devices`).
+    2.  Run the app targeting the device ID:
+        ```sh
+        flutter run -d <device_id>
+        ```
+        (e.g., `flutter run -d emulator-5554`)
 *   **Run on the web:**
     ```sh
     flutter run -d chrome
@@ -102,9 +114,20 @@ You can run the app on a connected device, simulator, or the web.
     *   **Rot Button:** Rotate piece
     *   **Drop Button:** Hard drop
 
+## How to Play Breakout
+
+*   **Keyboard Controls:**
+    *   **Arrow Left:** Move paddle left
+    *   **Arrow Right:** Move paddle right
+*   **On-screen Controls (for touch devices):**
+    *   **Left Button:** Move paddle left (press and hold for continuous movement)
+    *   **Right Button:** Move paddle right (press and hold for continuous movement)
+    *   **Restart:** Press any key or tap the screen after Game Over.
+
 **Recent Improvements:**
 *   On-screen left and right movement buttons now support "press and hold" for continuous movement.
 *   Resolved issues with on-screen controls not appearing and the game starting directly on the "Game Over" screen.
+*   **Breakout Game:** Added the classic Breakout game with levels, score, lives, sound effects, and both keyboard/on-screen controls. Fixed critical layout and logic bugs, and tuned paddle width and ball speed.
 
 ## Built With
 
