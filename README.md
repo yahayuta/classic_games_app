@@ -19,6 +19,10 @@ A Flutter application featuring classic arcade games like Asteroids and Pong, bu
     *   Control the paddle to keep the ball in play.
     *   Progress through levels with increasing difficulty.
     *   Score points for broken bricks and paddle hits.
+*   **Space Invaders:** The timeless arcade shooter.
+    *   Defend against waves of alien invaders.
+    *   Shoot down enemies and avoid their fire.
+    *   Progress through increasingly difficult stages.
 
 ## Screenshots
 
@@ -123,6 +127,17 @@ You can run the app on a connected device, simulator, or the web.
     *   **Left Button:** Move paddle left (press and hold for continuous movement)
     *   **Right Button:** Move paddle right (press and hold for continuous movement)
     *   **Restart:** Press any key or tap the screen after Game Over.
+
+## How to Play Space Invaders
+
+*   **Keyboard Controls:**
+    *   **Arrow Left:** Move left
+    *   **Arrow Right:** Move right
+    *   **Space Bar:** Shoot
+*   **On-screen Controls (for touch devices):**
+    *   **Left Button:** Move left
+    *   **Right Button:** Move right
+    *   **Fire Button:** Shoot
 
 **Recent Improvements:**
 *   On-screen left and right movement buttons now support "press and hold" for continuous movement.

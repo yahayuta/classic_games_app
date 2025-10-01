@@ -3,6 +3,7 @@ import 'package:classic_games_app/asteroids/asteroids_game.dart' as game;
 import 'package:classic_games_app/pong/pong_game.dart' as pongGame;
 import 'package:classic_games_app/tetris/main.dart' as tetrisGame;
 import 'package:classic_games_app/breakout/breakout_game.dart' as breakoutGame;
+import 'package:classic_games_app/space_invaders/space_invaders.dart' as spaceInvadersGame;
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -81,6 +82,17 @@ class MainMenu extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const BreakoutGameScreen()),
+              );
+            },
+          ),
+          GameCard(
+            title: 'Space Invaders',
+            description: 'Defend the earth from alien invaders.',
+            icon: const Icon(Icons.airplanemode_active, size: 50),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SpaceInvadersGameScreen()),
               );
             },
           ),
@@ -279,6 +291,47 @@ class _BreakoutGameScreenState extends State<BreakoutGameScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Breakout'),
+      ),
+      body: GameWidget(
+        game: _game,
+        focusNode: _focusNode,
+      ),
+    );
+  }
+}
+
+class SpaceInvadersGameScreen extends StatefulWidget {
+  const SpaceInvadersGameScreen({super.key});
+
+  @override
+  State<SpaceInvadersGameScreen> createState() => _SpaceInvadersGameScreenState();
+}
+
+class _SpaceInvadersGameScreenState extends State<SpaceInvadersGameScreen> {
+  late final FocusNode _focusNode;
+  late final spaceInvadersGame.SpaceInvadersGame _game;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode();
+    _game = spaceInvadersGame.SpaceInvadersGame();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _focusNode.requestFocus();
+    });
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Space Invaders'),
       ),
       body: GameWidget(
         game: _game,
