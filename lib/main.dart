@@ -4,6 +4,7 @@ import 'package:classic_games_app/pong/pong_game.dart' as pongGame;
 import 'package:classic_games_app/tetris/main.dart' as tetrisGame;
 import 'package:classic_games_app/breakout/breakout_game.dart' as breakoutGame;
 import 'package:classic_games_app/space_invaders/space_invaders.dart' as spaceInvadersGame;
+import 'package:classic_games_app/missile_command/missile_command.dart' as missileCommandGame;
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -96,6 +97,17 @@ class MainMenu extends StatelessWidget {
               );
             },
           ),
+          GameCard(
+            title: 'Missile Command',
+            description: 'Defend your cities from incoming missiles!',
+            icon: const Icon(Icons.shield, size: 50),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MissileCommandGameScreen()),
+              );
+            },
+          ),
         ],
       ),
     );
@@ -121,15 +133,17 @@ class GameCard extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Card(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            icon,
-            const SizedBox(height: 10),
-            Text(title, style: const TextStyle(fontSize: 20)),
-            const SizedBox(height: 5),
-            Text(description, textAlign: TextAlign.center),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              icon,
+              const SizedBox(height: 10),
+              Text(title, style: const TextStyle(fontSize: 20)),
+              const SizedBox(height: 5),
+              Text(description, textAlign: TextAlign.center),
+            ],
+          ),
         ),
       ),
     );
@@ -332,6 +346,47 @@ class _SpaceInvadersGameScreenState extends State<SpaceInvadersGameScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Space Invaders'),
+      ),
+      body: GameWidget(
+        game: _game,
+        focusNode: _focusNode,
+      ),
+    );
+  }
+}
+
+class MissileCommandGameScreen extends StatefulWidget {
+  const MissileCommandGameScreen({super.key});
+
+  @override
+  State<MissileCommandGameScreen> createState() => _MissileCommandGameScreenState();
+}
+
+class _MissileCommandGameScreenState extends State<MissileCommandGameScreen> {
+  late final FocusNode _focusNode;
+  late final missileCommandGame.MissileCommandGame _game;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode();
+    _game = missileCommandGame.MissileCommandGame();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _focusNode.requestFocus();
+    });
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Missile Command'),
       ),
       body: GameWidget(
         game: _game,

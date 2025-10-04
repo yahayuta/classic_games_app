@@ -23,6 +23,10 @@ A Flutter application featuring classic arcade games like Asteroids and Pong, bu
     *   Defend against waves of alien invaders.
     *   Shoot down enemies and avoid their fire.
     *   Progress through increasingly difficult stages.
+*   **Missile Command:** The classic city defense game.
+    *   Defend your cities from incoming missiles.
+    *   Single base with unlimited ammo.
+    *   Progress through waves of increasing difficulty.
 
 ## Screenshots
 
@@ -42,7 +46,7 @@ To get a local copy up and running, follow these simple steps.
 
 1.  Clone the repo
     ```sh
-    git clone https://github.com/your_username_/classic_games_app.git
+    git clone https://github.com/<your-username>/classic_games_app.git
     ```
 2.  Install packages
     ```sh
@@ -139,10 +143,26 @@ You can run the app on a connected device, simulator, or the web.
     *   **Right Button:** Move right
     *   **Fire Button:** Shoot
 
-**Recent Improvements:**
+## How to Play Missile Command
+
+*   **Objective:** Defend your six cities from a barrage of incoming enemy missiles.
+*   **Controls:**
+    *   **Tap/Click:** Tap or click on the screen to launch a missile from your central base to that location. The missile will create an explosion that destroys any enemy missiles within its blast radius.
+*   **Gameplay:**
+    *   You have a single missile base with unlimited ammo.
+    *   The game progresses in waves, with each wave getting progressively harder.
+    *   The game is over when all of your cities are destroyed.
+
+## Recent Improvements
+
+*   **Missile Command:**
+    *   Simplified the game to a "Single Base Defense" model with one central base and infinite ammo.
+    *   Implemented a robust collision detection system using Flame's built-in engine.
+    *   Improved the visibility of both player and enemy missiles.
+    *   Fixed various bugs related to game logic and UI.
+*   **Breakout Game:** Added the classic Breakout game with levels, score, lives, sound effects, and both keyboard/on-screen controls. Fixed critical layout and logic bugs, and tuned paddle width and ball speed.
 *   On-screen left and right movement buttons now support "press and hold" for continuous movement.
 *   Resolved issues with on-screen controls not appearing and the game starting directly on the "Game Over" screen.
-*   **Breakout Game:** Added the classic Breakout game with levels, score, lives, sound effects, and both keyboard/on-screen controls. Fixed critical layout and logic bugs, and tuned paddle width and ball speed.
 
 ## Built With
 
