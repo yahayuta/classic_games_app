@@ -27,6 +27,9 @@ A Flutter application featuring classic arcade games like Asteroids and Pong, bu
     *   Defend your cities from incoming missiles.
     *   Single base with unlimited ammo.
     *   Progress through waves of increasing difficulty.
+*   **Snake:** The classic game where you control a growing snake.
+    *   Eat the food to grow longer.
+    *   Avoid hitting the walls or your own body.
 
 ## Screenshots
 
@@ -152,6 +155,15 @@ You can run the app on a connected device, simulator, or the web.
     *   You have a single missile base with unlimited ammo.
     *   The game progresses in waves, with each wave getting progressively harder.
     *   The game is over when all of your cities are destroyed.
+
+## How to Play Snake
+
+*   **Keyboard Controls:**
+    *   **Arrow Keys:** Control the direction of the snake.
+*   **On-screen Controls (for touch devices):**
+    *   **Directional Buttons:** Control the direction of the snake.
+*   **Restart:**
+    *   After Game Over, press SPACE or tap any on-screen button to restart.
 
 ## Recent Improvements
 

@@ -5,6 +5,7 @@ import 'package:classic_games_app/tetris/main.dart' as tetrisGame;
 import 'package:classic_games_app/breakout/breakout_game.dart' as breakoutGame;
 import 'package:classic_games_app/space_invaders/space_invaders.dart' as spaceInvadersGame;
 import 'package:classic_games_app/missile_command/missile_command.dart' as missileCommandGame;
+import 'package:classic_games_app/snake/snake_game.dart' as snakeGame;
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -105,6 +106,17 @@ class MainMenu extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const MissileCommandGameScreen()),
+              );
+            },
+          ),
+          GameCard(
+            title: 'Snake',
+            description: 'Eat the food and grow.',
+            icon: const Icon(Icons.turn_right, size: 50),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SnakeGameScreen()),
               );
             },
           ),
@@ -385,8 +397,46 @@ class _MissileCommandGameScreenState extends State<MissileCommandGameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: GameWidget(
+        game: _game,
+        focusNode: _focusNode,
+      ),
+    );
+  }
+}
+
+class SnakeGameScreen extends StatefulWidget {
+  const SnakeGameScreen({super.key});
+
+  @override
+  State<SnakeGameScreen> createState() => _SnakeGameScreenState();
+}
+
+class _SnakeGameScreenState extends State<SnakeGameScreen> {
+  late final FocusNode _focusNode;
+  late final snakeGame.SnakeGame _game;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode();
+    _game = snakeGame.SnakeGame();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _focusNode.requestFocus();
+    });
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       appBar: AppBar(
-        title: const Text('Missile Command'),
+        title: const Text('Snake'),
       ),
       body: GameWidget(
         game: _game,

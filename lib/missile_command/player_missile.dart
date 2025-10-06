@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:classic_games_app/missile_command/explosion.dart';
 import 'package:flame/components.dart';
-import 'package:flame/game.dart';
 
 class PlayerMissile extends PositionComponent with HasGameRef {
   static final _paint = Paint()..color = const Color(0xFFFFFF00);

@@ -18,24 +18,24 @@ import 'package:classic_games_app/missile_command/visible_text_component.dart';
 
 class MissileCommandGame extends FlameGame with HasCollisionDetection, TapCallbacks, KeyboardEvents {
   late Timer _missileSpawnTimer;
-  List<City> _cities = [];
+  final List<City> _cities = [];
   int score = 0;
-  late TextComponent _scoreText = TextComponent(text: 'Score: $score', position: Vector2(10, 10));
-  late TextComponent _waveText = TextComponent(text: 'Wave: 1', position: Vector2(10, 70));
-  late TextComponent _highScoreText = TextComponent(text: 'High Score: 0', position: Vector2(size.x - 150, 10));
+  late final TextComponent _scoreText = TextComponent(text: 'Score: $score', position: Vector2(10, 10));
+  late final TextComponent _waveText = TextComponent(text: 'Wave: 1', position: Vector2(10, 70));
+  late final TextComponent _highScoreText = TextComponent(text: 'High Score: 0', position: Vector2(size.x - 150, 10));
   bool _isGameOver = false;
   int _currentWave = 1;
-  int _highScore = 0;
+  final int _highScore = 0;
 
   late MissileBase _missileBase;
 
-  late VisibleTextComponent _gameOverText = VisibleTextComponent(
+  late final VisibleTextComponent _gameOverText = VisibleTextComponent(
     text: 'GAME OVER',
     position: size / 2,
     anchor: Anchor.center,
     textRenderer: TextPaint(style: const TextStyle(fontSize: 48, color: Color(0xFFFF0000))),
   )..isVisible = false;
-  late VisibleTextComponent _restartText = VisibleTextComponent(
+  late final VisibleTextComponent _restartText = VisibleTextComponent(
     text: 'Tap to Restart',
     position: Vector2(size.x / 2, size.y / 2 + 50),
     anchor: Anchor.center,
