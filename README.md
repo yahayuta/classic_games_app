@@ -165,8 +165,21 @@ You can run the app on a connected device, simulator, or the web.
 *   **Restart:**
     *   After Game Over, press SPACE or tap any on-screen button to restart.
 
+## How to Play Blackjack
+
+*   **Objective:** Get a hand value as close to 21 as possible without going over.
+*   **On-screen Controls (for touch devices):**
+    *   **Hit Button:** Draw a new card.
+    *   **Stand Button:** End your turn.
+    *   **New Game Button:** Appears after a round is over to start a new game.
+
 ## Recent Improvements
 
+*   **Blackjack Game:**
+    *   Implemented a touch interface with on-screen buttons for "Hit", "Stand", and "New Game".
+    *   Improved button styling and fixed rendering issues to ensure visibility.
+    *   Refactored background rendering for better performance and reliability.
+    *   Removed keyboard controls to create a touch-only experience.
 *   **Missile Command:**
     *   Simplified the game to a "Single Base Defense" model with one central base and infinite ammo.
     *   Implemented a robust collision detection system using Flame's built-in engine.

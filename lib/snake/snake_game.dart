@@ -23,6 +23,7 @@ class SnakeGame extends FlameGame with KeyboardHandler, HasCollisionDetection {
   late TimerComponent gameLoop;
   bool isGameRunning = true;
   bool _buttonsAdded = false;
+  @override
   bool isLoaded = false;
 
   @override
