@@ -30,6 +30,9 @@ A Flutter application featuring classic arcade games like Asteroids and Pong, bu
 *   **Snake:** The classic game where you control a growing snake.
     *   Eat the food to grow longer.
     *   Avoid hitting the walls or your own body.
+*   **Frogger:** The classic game where you guide a frog to safety.
+    *   Cross a busy road and a hazardous river.
+    *   Avoid cars and jump on logs and turtles.
 
 ## Screenshots
 
@@ -173,8 +176,22 @@ You can run the app on a connected device, simulator, or the web.
     *   **Stand Button:** End your turn.
     *   **New Game Button:** Appears after a round is over to start a new game.
 
+## How to Play Frogger
+
+*   **Keyboard Controls:**
+    *   **Arrow Keys:** Move the frog up, down, left, or right.
+*   **On-screen Controls (for touch devices):**
+    *   **Directional Buttons:** Move the frog.
+*   **Restart:**
+    *   After Game Over, press the "Restart" button.
+
 ## Recent Improvements
 
+*   **Frogger Game:**
+    *   Added the classic Frogger game.
+    *   Fixed a bug where the game would freeze upon collision with an obstacle.
+    *   Added a "Game Over" screen with a "Restart" button.
+    *   Removed debug overlays and console logs.
 *   **Blackjack Game:**
     *   Implemented a touch interface with on-screen buttons for "Hit", "Stand", and "New Game".
     *   Improved button styling and fixed rendering issues to ensure visibility.

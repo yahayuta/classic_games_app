@@ -3,7 +3,7 @@ import 'package:classic_games_app/pong/pong_game.dart' as pongGame;
 import 'package:classic_games_app/tetris/main.dart' as tetrisGame;
 import 'package:classic_games_app/breakout/breakout_game.dart' as breakoutGame;
 import 'package:classic_games_app/space_invaders/space_invaders.dart' as spaceInvadersGame;
-import 'package:classic_games_app/missile_command/missile_command.dart' as missileCommandGame;
+import 'package:classic_games_app/frogger/frogger_game.dart' as froggerGame;
 import 'package:classic_games_app/snake/snake_game.dart' as snakeGame;
 import 'package:classic_games_app/blackjack/blackjack_game.dart' as blackjackGame;
 import 'package:flame/game.dart';
@@ -99,13 +99,13 @@ class MainMenu extends StatelessWidget {
             },
           ),
           GameCard(
-            title: 'Missile Command',
-            description: 'Defend your cities from incoming missiles!',
-            icon: const Icon(Icons.shield, size: 50),
+            title: 'Frogger',
+            description: 'Cross the road and the river.',
+            icon: const Icon(Icons.directions_walk, size: 50),
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const MissileCommandGameScreen()),
+                MaterialPageRoute(builder: (context) => const FroggerGameScreen()),
               );
             },
           ),
@@ -378,22 +378,22 @@ class _SpaceInvadersGameScreenState extends State<SpaceInvadersGameScreen> {
   }
 }
 
-class MissileCommandGameScreen extends StatefulWidget {
-  const MissileCommandGameScreen({super.key});
+class FroggerGameScreen extends StatefulWidget {
+  const FroggerGameScreen({super.key});
 
   @override
-  State<MissileCommandGameScreen> createState() => _MissileCommandGameScreenState();
+  State<FroggerGameScreen> createState() => _FroggerGameScreenState();
 }
 
-class _MissileCommandGameScreenState extends State<MissileCommandGameScreen> {
+class _FroggerGameScreenState extends State<FroggerGameScreen> {
   late final FocusNode _focusNode;
-  late final missileCommandGame.MissileCommandGame _game;
+  late final froggerGame.FroggerGame _game;
 
   @override
   void initState() {
     super.initState();
     _focusNode = FocusNode();
-    _game = missileCommandGame.MissileCommandGame();
+    _game = froggerGame.FroggerGame();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _focusNode.requestFocus();
     });
@@ -408,6 +408,9 @@ class _MissileCommandGameScreenState extends State<MissileCommandGameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Frogger'),
+      ),
       body: GameWidget(
         game: _game,
         focusNode: _focusNode,
